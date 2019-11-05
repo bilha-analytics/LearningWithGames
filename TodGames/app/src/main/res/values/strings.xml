@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TodGames</string>
+    <string name="title_activity_games_list">GamesListActivity</string>
+    <string name="title_activity_numbers_game">NumbersGameActivity</string>
+    <string name="title_activity_letters_game">LettersGameActivity</string>
+    <string name="title_activity_animals_game">AnimalsGameActivity</string>
+    <string name="title_activity_play_game">PlayGameActivity</string>
+</resources>
