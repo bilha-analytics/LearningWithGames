@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">WidgetsApp</string>
+
+    <string-array name="example_list">
+        <item> Cow </item>
+        <item> Goat </item>
+        <item> Sheep </item>
+        <item> Pig </item>
+        <item> Chicken </item>
+        <item> Duck </item>
+        <item> Goose</item>
+        <item> Turkey </item>
+        <item> Donkey </item>
+        <item> Dog </item>
+        <item> Cat </item>
+        <item> Bee </item>
+        <item> Worm </item>
+        <item> Beetle </item>
+        <item> Fly </item>
+    </string-array>
+</resources>

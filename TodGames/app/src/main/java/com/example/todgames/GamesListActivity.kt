@@ -29,12 +29,12 @@ class GamesListActivity : AppCompatActivity() {
     }
     fun onClickLettersGame(view: View){
 //        setNextActivity(this@GamesListActivity, NumbersGameActivity::class.java)
-        startActivity(Intent(this@GamesListActivity, NumbersGameActivity::class.java))
+        startActivity(Intent(this@GamesListActivity, LettersGameActivity::class.java))
         finish()
     }
     fun onClickAnimalsGame(view: View){
 //        setNextActivity(this@GamesListActivity, NumbersGameActivity::class.java)
-        startActivity(Intent(this@GamesListActivity, NumbersGameActivity::class.java))
+        startActivity(Intent(this@GamesListActivity, AnimalsGameActivity::class.java))
         finish()
     }
 
