@@ -26,11 +26,11 @@ class MainActivity : AppCompatActivity() {
 
     fun buttonClick(view:View){
         startActivity( Intent( this@MainActivity, ListsActivity::class.java))
-        finish()
+//        finish()
     }
 
     fun dataButtonClick(view:View){
         startActivity( Intent( this@MainActivity, DataStorageActivity::class.java))
-        finish()
+//        finish()
     }
 }
