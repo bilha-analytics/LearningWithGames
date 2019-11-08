@@ -1,6 +1,7 @@
 package com.example.forethan
 
 import GameItem
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -21,7 +22,7 @@ class HomeActivity : AppCompatActivity() {
         for( game in gamesList){
             addGame(game)
         }
-    } 
+    }
 
 
     private fun addGame(gameItem: GameItem){
@@ -32,17 +33,18 @@ class HomeActivity : AppCompatActivity() {
 
 
         widget.game_icon_btn.setOnClickListener{v: View? ->
-            loadGame( v!!.id.toString() )
-            Log.d("imgBut", "selected {${v.id.toString()}} ")
+            loadGame( gameItem )
+            Log.d("imgBut", "selected ${v!!.id} for ${gameItem.name}")
         }
 
         home_list_grid.addView( widget )
     }
 
 
-    private fun loadGame(id: String ){
-        when(id){
-        }
+    private fun loadGame(gameItem: GameItem ){
+        val intentd = Intent( this, GameIntroActivity::class.java)
+        intentd.putExtra("gameItem", gameItem)
+        startActivity(intentd)
     }
 
     private fun getGameWidgetID(gameName:String):String{
@@ -53,7 +55,8 @@ class HomeActivity : AppCompatActivity() {
             GameItem(
                 "Big Number game",
                 "Show us which number is larger.\nSelect the number that is bigger than the other to earn points",
-                R.drawable.number_game
+                R.drawable.number_game,
+                "Which number is bigger?"
             ) )
 
 
@@ -61,7 +64,8 @@ class HomeActivity : AppCompatActivity() {
             GameItem(
                 "Capital Letters game",
                 "Show us which small letter goes with this capital letter.\nSelect the small letter that goes with this capital letter to earn points",
-                R.drawable.alphabet2
+                R.drawable.alphabet2,
+                "Which is the small letter?"
             ) )
 
 
@@ -69,7 +73,8 @@ class HomeActivity : AppCompatActivity() {
             GameItem(
                 "Word game",
                 "How do you  write the name of the object in the picture?\nSelect the word that matches the picture to earn points",
-                R.drawable.word_game
+                R.drawable.word_game,
+                "Which is the correct word?"
             ) )
 
 
@@ -77,7 +82,8 @@ class HomeActivity : AppCompatActivity() {
             GameItem(
                 "Animals game",
                 "Which animal makes this sound.\nSelect the animal that makes that sound to earn points",
-                R.drawable.animals_game
+                R.drawable.animals_game,
+                "Which animal makes that sound?"
             ) )
 
 
@@ -85,7 +91,8 @@ class HomeActivity : AppCompatActivity() {
             GameItem(
                 "Counting game",
                 "Can you help me identify which number comes next?\nSelect the number that comes next to earn points",
-                R.drawable.number_game2
+                R.drawable.number_game2,
+                "Which number comes after?"
             ) )
 
     }
