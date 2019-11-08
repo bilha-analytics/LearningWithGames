@@ -33,4 +33,9 @@ class MainActivity : AppCompatActivity() {
         startActivity( Intent( this@MainActivity, DataStorageActivity::class.java))
 //        finish()
     }
+
+    fun dynamicUiButtonClick(v:View){
+
+        startActivity( Intent( this@MainActivity, DynamicUIActivity::class.java))
+    }
 }
