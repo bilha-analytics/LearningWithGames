@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import com.daimajia.androidanimations.library.Techniques
+import com.daimajia.androidanimations.library.YoYo
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.game_item_widget.view.*
 
@@ -31,8 +33,8 @@ class HomeActivity : AppCompatActivity() {
         widget.game_icon_btn.setImageResource( gameItem.iconID )
         widget.game_icon_btn.setTag( getGameWidgetID(gameItem.name ) )
 
-
         widget.game_icon_btn.setOnClickListener{v: View? ->
+            YoYo.with(Techniques.Wobble).duration(2000).playOn( widget )
             loadGame( gameItem )
             Log.d("imgBut", "selected ${v!!.id} for ${gameItem.name}")
         }
@@ -52,7 +54,7 @@ class HomeActivity : AppCompatActivity() {
     }
     private  fun loadGamesList(){
         gamesList.add(
-            GameItem(
+            GameItem( GameItem.BIG_NUMBER_GAME,
                 "Big Number game",
                 "Show us which number is larger.\nSelect the number that is bigger than the other to earn points",
                 R.drawable.number_game,
@@ -61,16 +63,16 @@ class HomeActivity : AppCompatActivity() {
 
 
         gamesList.add(
-            GameItem(
+            GameItem(GameItem.BIG_LETTER_GAME,
                 "Capital Letters game",
-                "Show us which small letter goes with this capital letter.\nSelect the small letter that goes with this capital letter to earn points",
+                "Show us which letter comes next\nSelect the letter that comes after to earn points",
                 R.drawable.alphabet2,
-                "Which is the small letter?"
+                "Which letter comes after the other?"
             ) )
 
 
         gamesList.add(
-            GameItem(
+            GameItem(GameItem.WORD_GAME,
                 "Word game",
                 "How do you  write the name of the object in the picture?\nSelect the word that matches the picture to earn points",
                 R.drawable.word_game,
@@ -79,7 +81,7 @@ class HomeActivity : AppCompatActivity() {
 
 
         gamesList.add(
-            GameItem(
+            GameItem(GameItem.COUNTING_GAME,
                 "Animals game",
                 "Which animal makes this sound.\nSelect the animal that makes that sound to earn points",
                 R.drawable.animals_game,
@@ -88,7 +90,7 @@ class HomeActivity : AppCompatActivity() {
 
 
         gamesList.add(
-            GameItem(
+            GameItem(GameItem.COUNTING_GAME,
                 "Counting game",
                 "Can you help me identify which number comes next?\nSelect the number that comes next to earn points",
                 R.drawable.number_game2,
