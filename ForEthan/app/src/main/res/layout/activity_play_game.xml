@@ -35,31 +35,16 @@
 
     <TextView
         android:id="@+id/txt_question"
-        android:layout_width="322dp"
-        android:layout_height="149dp"
-        android:layout_marginTop="128dp"
+        android:layout_width="331dp"
+        android:layout_height="195dp"
+        android:layout_marginTop="84dp"
         android:gravity="center|center_horizontal|center_vertical"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:fontFamily="monospace"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/widget_scores" />
-
-    <Button
-        android:id="@+id/btn_left"
-        android:layout_width="170dp"
-        android:layout_height="126dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:background="#E91E63"
-        android:onClick="buttonClicked"
-        android:text="Button"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_question"
-        app:layout_constraintVertical_bias="0.269" />
 
     <Button
         android:id="@+id/btn_right"
@@ -72,9 +57,25 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.709"
+        app:layout_constraintHorizontal_bias="0.728"
         app:layout_constraintStart_toEndOf="@+id/btn_left"
         app:layout_constraintTop_toBottomOf="@+id/txt_question"
-        app:layout_constraintVertical_bias="0.269" />
+        app:layout_constraintVertical_bias="0.673" />
+
+    <Button
+        android:id="@+id/btn_left"
+        android:layout_width="170dp"
+        android:layout_height="126dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:background="#E91E63"
+        android:onClick="buttonClicked"
+        android:text="Button"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_question"
+        app:layout_constraintVertical_bias="0.673" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
