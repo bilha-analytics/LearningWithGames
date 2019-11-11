@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.skyfishjy.library.RippleBackground
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:rb_color="#0099cc"
+        app:rb_radius="32dp"
+        app:rb_rippleAmount="4"
+        app:rb_duration="5000"
+        app:rb_scale="6"
+        >
+
+    </com.skyfishjy.library.RippleBackground>
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="289dp"
@@ -15,6 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/splash" />
+
 
     <TextView
         android:id="@+id/textView"

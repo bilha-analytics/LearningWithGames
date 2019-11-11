@@ -12,15 +12,15 @@
         layout="@layout/scores_item"
         android:layout_width="268dp"
         android:layout_height="152dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="44dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <com.beardedhen.androidbootstrap.BootstrapLabel
         android:id="@+id/txt_timer_countDown"
         android:layout_width="95dp"
         android:layout_height="103dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="76dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="#A4CCBBBB"
@@ -29,14 +29,20 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="#2196F3"
         android:textStyle="bold"
+
+        app:bootstrapBrand="warning"
+        app:bootstrapHeading="h1"
         app:layout_constraintEnd_toEndOf="parent"
+
+
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/widget_scores"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:roundedCorners="true" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_player_widget"
-        android:layout_width="418dp"
+        android:layout_width="match_parent"
         android:layout_height="420dp"
         android:background="#F5FFFFFF"
         android:foregroundGravity="center_vertical|center"

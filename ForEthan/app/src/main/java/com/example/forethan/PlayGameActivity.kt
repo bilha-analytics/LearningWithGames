@@ -130,7 +130,7 @@ class PlayGameActivity : AppCompatActivity() {
             player_widget.txt_question.text = "$msg2\n$msg1\n\n$kudos"
             txt_count_clicks.text = "$count_clicks"
             txt_count_correct.text = "$count_correct"
-            txt_percent_score.text = " ${count_correct/count_clicks*100}%"
+            txt_percent_score.text = " ${ (count_correct/count_clicks*100) }%"
             updateButtons()
         }
 

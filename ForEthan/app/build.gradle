@@ -32,6 +32,7 @@ dependencies {
 
     implementation 'com.daimajia.easing:library:2.0@aar'
     implementation 'com.daimajia.androidanimations:library:2.3@aar'
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
 
     implementation 'com.beardedhen:androidbootstrap:2.3.2'
 

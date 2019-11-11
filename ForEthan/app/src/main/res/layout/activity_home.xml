@@ -17,9 +17,8 @@
 
             <androidx.gridlayout.widget.GridLayout
                 android:id="@+id/home_list_grid"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 app:columnCount="2"></androidx.gridlayout.widget.GridLayout>
         </LinearLayout>
     </ScrollView>
