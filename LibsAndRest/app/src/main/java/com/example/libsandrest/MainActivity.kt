@@ -1,5 +1,6 @@
 package com.example.libsandrest
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -35,5 +36,9 @@ class MainActivity : AppCompatActivity() {
         textView2.text = ""+json.getInt("day")+"-"+json.getInt("month")+"-"+json.getInt("year")
         Picasso.get().load(json.getString("img")).into( imageView )
         textView.text = json.getString( "alt" )
+    }
+
+    fun martysDrawLib(v: View){
+        startActivity(Intent(this, MartysPaintLib::class.java))
     }
 }
