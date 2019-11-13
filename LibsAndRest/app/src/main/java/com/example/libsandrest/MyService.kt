@@ -83,9 +83,19 @@ class MyService : Service() {
             notification.setContentText( "The service is running!!!" )
             notification.setSmallIcon( android.R.drawable.btn_plus )
 
+
+            // pending intent that triggers an activity
             val notificationIntent = Intent( this@MyService, MainActivity::class.java )
             val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0)
             notification.setContentIntent( pendingIntent )
+
+
+            //adding button actions + service specific pending intent
+            val playIntent = Intent( this, MyService::class.java )
+            playIntent.action = "startPlayer"
+            val axnSomething = Notification.Action.Builder(android.R.drawable.btn_plus, "|>>",
+                PendingIntent.getService(this, 0, playIntent, 0)).build()
+            notification.addAction( axnSomething )
 
             mgr.notify(123, notification.build())
 

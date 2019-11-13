@@ -36,12 +36,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //ensure we've got permission to save files
 
-        //register broadcast receiver with set filter
-        val intentFilter = IntentFilter()
-        intentFilter.addAction("downloadComplete")
-        registerReceiver(MyServiceReciever(), intentFilter)
+        // deal if launched from a notification
+        if( intent == null ){ //use savedInstanceState how??? << Not working
+            Log.d("myservice", "Launched from notification intent")
+
+        }else{
+        // else init b/c is first time
+            //ensure we've got permission to save files
+
+
+            //register broadcast receiver with set filter
+            val intentFilter = IntentFilter()
+            intentFilter.addAction("downloadComplete")
+            registerReceiver(MyServiceReciever(), intentFilter)
+        }
     }
 
     fun onClickFetch(v: View){
