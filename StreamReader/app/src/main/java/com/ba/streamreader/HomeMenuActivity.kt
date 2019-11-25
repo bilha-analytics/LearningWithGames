@@ -15,6 +15,19 @@ import kotlin.random.Random
 
 class HomeMenuActivity : AppCompatActivity() {
 
+    companion object{
+        val STR_XKCD = "XKCD"
+        val STR_MAKEUP = "Makeup"
+        val STR_QUOTES = "Quotes"
+        val STR_BOOK_COVERS = "Book Covers"
+        val STR_CAT_FACTS  = "Cat Facts"
+        val STR_BORED_ACTIVITIES = "Bored?"
+        val STR_JOKES = "Joke-a-Jokes!"
+        val STR_RICK_MORTY = "Rick and Morty"
+        val STR_TRIVIA = "Trivia"
+        val STR_NUMBERS = "Number Facts"
+    }
+
     data class MenuItem(
         val name:String,
         val description: String,
@@ -25,9 +38,17 @@ class HomeMenuActivity : AppCompatActivity() {
         init { updateRandomURL()  }
 
         fun updateRandomURL(){
-            if( name == "XKCD" ){
+            if( name == STR_XKCD ){
                 url = "http://xkcd.com/${Random.nextInt(2226)}/info.0.json"
+            }else if( name == STR_BOOK_COVERS){
+                url = "http://covers.openlibrary.org/b/ID/${Random.nextLong(9099999)}-M.jpg"
+            }else if( name == STR_RICK_MORTY){
+                url = "https://rickandmortyapi.com/api/character/${Random.nextInt(493)}"
+            }else if (name == STR_NUMBERS){
+                val opts = listOf<String>("math", "trivia", "year", "date")
+                url = "http://numbersapi.com/random/${opts[Random.nextInt(opts.size - 1) ]}?json"
             }
+
         }
 
     }
@@ -96,17 +117,25 @@ class HomeMenuActivity : AppCompatActivity() {
 
 
     private fun generateMenuListData() {
-        homeMenu.add(MenuItem("XKCD", "Daily XKCD comic", R.drawable.xkcd, "http://xkcd.com/info.0.json", true ))
-        homeMenu.add(MenuItem("Makeup", "Major makup brnads and their products", R.drawable.makeup, "https://makeup-api.herokuapp.com/api/v1/products.json", true) )
+        homeMenu.add(MenuItem(STR_XKCD, "Daily XKCD comic", R.drawable.xkcd, "http://xkcd.com/info.0.json", true ))
+        homeMenu.add(MenuItem(STR_MAKEUP, "Major makeup brands and their products", R.drawable.makeup, "https://makeup-api.herokuapp.com/api/v1/products.json", true) )
         homeMenu.add(
             MenuItem(
-                "Quotes",
+                STR_QUOTES,
                 "Random common, inspirational, silly quotes",
                 R.drawable.quotes,
                 "https://quote-garden.herokuapp.com/quotes/random",
                 false
             )
         )
+        homeMenu.add( MenuItem(STR_BOOK_COVERS, "Random book covers discovery", R.drawable.books, "http://covers.openlibrary.org/b/ID/1-M.jpg", true))
+        homeMenu.add( MenuItem(STR_BORED_ACTIVITIES, "Are you bored? Try some of these activities", R.drawable.bored, "http://www.boredapi.com/api/activity/", false))
+        homeMenu.add( MenuItem(STR_CAT_FACTS, "Random infor about cats", R.drawable.cat_facts, "https://cat-fact.herokuapp.com/facts" , false ))
+        homeMenu.add( MenuItem(STR_JOKES, "Programming and random jokes", R.drawable.jokes, "https://official-joke-api.appspot.com/random_joke", false))
+        homeMenu.add( MenuItem(STR_RICK_MORTY, "Information about characters in Rick and Morty series", R.drawable.rick_morty, "https://rickandmortyapi.com/api/character/1", true))
+        homeMenu.add( MenuItem(STR_TRIVIA, "Open Trivia database", R.drawable.trivia, "https://opentdb.com/api.php?amount=1", false))
+        homeMenu.add( MenuItem(STR_NUMBERS, "Facts about numbers @ math, year, trivia", R.drawable.numbers, "http://numbersapi.com/random/year?json", false))
+
     }
 
 //    private lateinit var adapter_homeMenu : ArrayAdapter<String>

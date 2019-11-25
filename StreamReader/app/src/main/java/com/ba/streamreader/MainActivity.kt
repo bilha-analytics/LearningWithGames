@@ -10,6 +10,8 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         lateinit var makeupList_JSONObject: String
+        lateinit var catfactsList_JSONObject: String
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,12 +21,17 @@ class MainActivity : AppCompatActivity() {
         Ion.with(this)
             .load( "https://makeup-api.herokuapp.com/api/v1/products.json" )
             .asString()
-            .setCallback() { e, res ->
+            .setCallback{ e, res ->
                 makeupList_JSONObject = "{ \"obj\" : $res }"
 
-                startActivity(Intent(this@MainActivity, HomeMenuActivity::class.java))
-
-                finish()
+                Ion.with(this@MainActivity)
+                    .load( "https://cat-fact.herokuapp.com/facts" )
+                    .asString()
+                    .setCallback{ e, res ->
+                        catfactsList_JSONObject = "$res"
+                        startActivity(Intent(this@MainActivity, HomeMenuActivity::class.java))
+                        finish()
+                    }
             }
 
 //        Thread( Runnable {
