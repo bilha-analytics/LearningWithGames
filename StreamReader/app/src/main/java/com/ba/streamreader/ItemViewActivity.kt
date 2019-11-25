@@ -88,7 +88,7 @@ class ItemViewActivity : AppCompatActivity() {
     }
 
     private fun getRandomMakeupItem() : String {
-        val json = JSONObject( "$MainActivity.makeupList_JSONObject" )
+        val json = JSONObject( "${MainActivity.makeupList_JSONObject}" )
         val ls = json.getJSONArray("obj")
         val res = ls.getString( Random.nextInt( ls.length() - 1 ) )
         return  res
@@ -136,7 +136,8 @@ class ItemViewActivity : AppCompatActivity() {
             } else if (currentMenuItem.name == HomeMenuActivity.STR_NUMBERS) {
                 isImaged = false
                 dtitle = json.getString("type").capitalize() + ":\t" + json.getString("number")
-                content = "" + json.getString("text")
+//                content = "" + json.getString("text")
+                content = Html.fromHtml(json.getString("text")).toString()
 
             } else if (currentMenuItem.name == HomeMenuActivity.STR_JOKES) {
                 isImaged = false
@@ -226,7 +227,7 @@ class ItemViewActivity : AppCompatActivity() {
             lay_itemBox.addView( view )
         }
 
-        findViewById<RippleBackground>(R.id.rippler)?.startRippleAnimation()
+//        findViewById<RippleBackground>(R.id.rippler)?.startRippleAnimation()
     }
 
     fun onClickListener(v:View){
