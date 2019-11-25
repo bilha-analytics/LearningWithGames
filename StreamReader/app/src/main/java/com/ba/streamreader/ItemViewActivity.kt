@@ -103,93 +103,97 @@ class ItemViewActivity : AppCompatActivity() {
     }
 
     fun doProcess(result:String) {
-        if( result == null ) return
+        if (result == null) return
 
-        var json = JSONObject( result )
+        try {
+            var json = JSONObject(result)
 
-        var isImaged: Boolean = false
-        var dtitle: String = ""
-        var subtext: String = ""
-        var content: String = ""
+            var isImaged: Boolean = false
+            var dtitle: String = ""
+            var subtext: String = ""
+            var content: String = ""
 
-        if (currentMenuItem.name == HomeMenuActivity.STR_XKCD) {
-            isImaged = true
-            dtitle = "" + json.getString("day") + "-" +
-                    json.getString("month") + "-" +
-                    json.getString("year") + ", " +
-                    json.getString("safe_title")
-            subtext = json.getString("alt")
-            content = json.getString("img")
+            if (currentMenuItem.name == HomeMenuActivity.STR_XKCD) {
+                isImaged = true
+                dtitle = "" + json.getString("day") + "-" +
+                        json.getString("month") + "-" +
+                        json.getString("year") + ", " +
+                        json.getString("safe_title")
+                subtext = json.getString("alt")
+                content = json.getString("img")
 
-        } else if (currentMenuItem.name == HomeMenuActivity.STR_MAKEUP) {
-            isImaged = true
-            dtitle = json.getString("name") + " by " + json.getString("brand")
-            subtext = json.getString("description")
-            content = json.getString("image_link")
+            } else if (currentMenuItem.name == HomeMenuActivity.STR_MAKEUP) {
+                isImaged = true
+                dtitle = json.getString("name") + " by " + json.getString("brand")
+                subtext = json.getString("description")
+                content = json.getString("image_link")
 
-        } else if (currentMenuItem.name == HomeMenuActivity.STR_QUOTES) {
-            isImaged = false
-            dtitle = json.getString("quoteAuthor")
-            content = json.getString("quoteText")
+            } else if (currentMenuItem.name == HomeMenuActivity.STR_QUOTES) {
+                isImaged = false
+                dtitle = json.getString("quoteAuthor")
+                content = json.getString("quoteText")
 
-        }else if (currentMenuItem.name == HomeMenuActivity.STR_NUMBERS) {
-            isImaged = false
-            dtitle = json.getString("type")+":\t"+ json.getString("number")
-            content = ""+json.getString("text")
+            } else if (currentMenuItem.name == HomeMenuActivity.STR_NUMBERS) {
+                isImaged = false
+                dtitle = json.getString("type").capitalize() + ":\t" + json.getString("number")
+                content = "" + json.getString("text")
 
-        } else if (currentMenuItem.name == HomeMenuActivity.STR_JOKES) {
-            isImaged = false
-            dtitle = json.getString("type")
-            content = ""+json.getString("setup")+"\n\n"+json.getString("punchline")
+            } else if (currentMenuItem.name == HomeMenuActivity.STR_JOKES) {
+                isImaged = false
+                dtitle = json.getString("type")
+                content = "" + json.getString("setup") + "\n\n" + json.getString("punchline")
 
-        } else if (currentMenuItem.name == HomeMenuActivity.STR_TRIVIA) {
-            isImaged = false
-            val res = json.getJSONArray("results").get(0)
-            if( res != null ) {
-                json = JSONObject(res.toString() )
-                dtitle = json.getString("category")
-                subtext = "Difficulty:\t"+json.getString("difficulty")+
-                        "\nAnswer:\t" + json.getString("correct_answer")
-                content = Html.fromHtml(json.getString("question") ).toString()
+            } else if (currentMenuItem.name == HomeMenuActivity.STR_TRIVIA) {
+                isImaged = false
+                val res = json.getJSONArray("results").get(0)
+                if (res != null) {
+                    json = JSONObject(res.toString())
+                    dtitle = json.getString("category")
+                    subtext = "Difficulty:\t" + json.getString("difficulty") +
+                            "\nAnswer:\t" + json.getString("correct_answer")
+                    content = Html.fromHtml(json.getString("question")).toString()
+                }
+
+            } else if (currentMenuItem.name == HomeMenuActivity.STR_CAT_FACTS) {
+                isImaged = true
+                dtitle = "Random cat + Random fact" //json.getString( "type")
+                subtext = json.getString("text")
+                content = json.getString("img")
+
+            } else if (currentMenuItem.name == HomeMenuActivity.STR_BOOK_COVERS) {
+                isImaged = true
+                dtitle = "Random book covers" //json.getString( "type")
+                content = json.getString("img")
+
+            } else if (currentMenuItem.name == HomeMenuActivity.STR_BORED_ACTIVITIES) {
+                isImaged = false
+                dtitle = json.getString("type").capitalize()
+                subtext = "Can be done by " + json.getString("participants") + " person(s)." +
+                        "\nAccessibility: " + json.getString("accessibility") +
+                        "\nPrice rank: " + json.getString("price") +
+                        "\nLink: " + json.getString("link")
+                content = json.getString("activity")
+
+            } else if (currentMenuItem.name == HomeMenuActivity.STR_RICK_MORTY) {
+                isImaged = true
+                dtitle = json.getString("name")
+
+                val origin = json.getJSONObject("origin")
+                val home = json.getJSONObject("location")
+                content = json.getString("image")
+
+                subtext =
+                    json.getString("species") + ", " + json.getString("gender") +
+                            "\nStatus:\t " + json.getString("status") +
+                            "\nOrigin:\t" + origin.getString("name") +
+                            "\nResides:\t" + home.getString("name")
+
             }
 
-        }else if (currentMenuItem.name == HomeMenuActivity.STR_CAT_FACTS) {
-            isImaged = true
-            dtitle = "Random cat + Random fact" //json.getString( "type")
-            subtext = json.getString("text")
-            content = json.getString("img")
-
-        } else if (currentMenuItem.name == HomeMenuActivity.STR_BOOK_COVERS) {
-            isImaged = true
-            dtitle = "Random book covers" //json.getString( "type")
-            content = json.getString("img")
-
-        }else if( currentMenuItem.name == HomeMenuActivity.STR_BORED_ACTIVITIES){
-            isImaged = false
-            dtitle = json.getString( "type").capitalize()
-            subtext = "Can be done by "+json.getString( "participants")+" person(s)."+
-                    "\nAccessibility: "+json.getString( "accessibility")+
-                    "\nPrice rank: "+ json.getString( "price")+
-                    "\nLink: "+json.getString( "link")
-            content = json.getString("activity")
-
-        }else if (currentMenuItem.name == HomeMenuActivity.STR_RICK_MORTY) {
-            isImaged = true
-            dtitle = json.getString("name")
-
-            val origin = json.getJSONObject("origin")
-            val home = json.getJSONObject("location")
-            content = json.getString("image")
-
-            subtext =
-                json.getString("species") + ", " + json.getString("gender")+
-                        "\nStatus:\t " + json.getString("status") +
-                        "\nOrigin:\t" + origin.getString("name") +
-                        "\nResides:\t" + home.getString("name")
+            displayContent(isImaged, dtitle, subtext, content)
+        }catch (e:Exception){
 
         }
-
-        displayContent(isImaged, dtitle, subtext, content)
     }
 
     private fun displayContent(isImaged:Boolean, dtitle:String, subtext: String, content: String){
