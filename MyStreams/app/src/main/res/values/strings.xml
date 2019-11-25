@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MyStreams</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string-array name="streams_menu">
+        <item> XKCD </item>
+        <item> Makeup </item>
+        <item> Quotes </item>
+    </string-array>
+
+    <string-array name="streams_description">
+        <item> Daily XKCD comic stream </item>
+        <item> Major makeup products streams</item>
+        <item> Various funny, insipirational, silly, mean, random quotes </item>
+    </string-array>
+</resources>
